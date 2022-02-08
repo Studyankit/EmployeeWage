@@ -1,5 +1,3 @@
-welcome to Employee Wage Computation
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,28 +6,44 @@ using System.Threading.Tasks;
 
 namespace EmployeeOperations
 {
-    internal class EmployeeParttime
+    internal class CalculateWagerforMonth
     {
-        public static void EmpWage()
+        //Constants
+        public const int IS_PART_TIME = 1;
+        public const int IS_FULL_TIME = 2;
+        public const int EMP_RATE_PER_HOUR = 20;
+        public const int NUM_OF_WORKING_DAYS = 20;
+        public static void CalculateWagesFor20DaysInMonth()
         {
-            int IS_FULL_TIME = 2;
-	    int IS_PART_TIME = 1;
-	    int EMP_RATE_PER_HOUR = 20;
-		int empHrs = 0;
-		int empWage = 0;
-            Random random = new Random();
-            int empCheck = random.Next(0, 2);
-            if (empCheck = IS_FULL_TIME)
-		empHrs = 8;
-             if else (empCheck = IS_PART_Time)
-		empHrs = 4;
-	     else
-		empHrs = 0;
-	empWage = empHrs * EMP_RATE_PER_HOUR;
-             
-	Console.WriteLine("Employee Wage: "+ empWage);
-	Console.ReadKey();
+
+            //variables
+            int empHrs = 0;
+            int empWage = 0;
+            int totalEmpWage = 0;
+            for (int day = 0; day < NUM_OF_WORKING_DAYS; day++)
+            {
+
+                Random random = new Random();
+                int empCheck = random.Next(0, 3);
+                switch (empCheck)
+                {
+                    case IS_PART_TIME:
+                        empHrs = 4;
+                        break;
+                    case IS_FULL_TIME:
+                        empHrs = 8;
+                        break;
+                    default:
+                        empHrs = 0;
+                        break;
+                }
+                empWage = empHrs * EMP_RATE_PER_HOUR;
+                totalEmpWage += empWage;   //int a=6; a+=10;a=a+10
+                Console.WriteLine("Emp Wage: " + empWage);
+            }
+            Console.WriteLine("Total Emp Wage: " + totalEmpWage);
         }
+
 
     }
 }
